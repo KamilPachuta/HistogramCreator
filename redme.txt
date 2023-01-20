@@ -1,0 +1,50 @@
+Tworzenie histogramu 
+
+
+Form1:
+- załaduj plik
+- podglad obrazu (zanim bedzie obraz mozna dac obrazek jakis)
+- podglad histogramu (bez danych)
+- wybór biblioteki ( c# albo ASm )
+- podgląd czasu wykonania ( standardowo 0.0s )
+- przycisk execute (domyślnie zablokowany do czasu załadowania obrazka)
+
+
+runapp ->>
+otwiera form1
+
+
+
+Button Load file -> -+napisac zwracanie pliku do zmiennej
+
+
+
+
+button execute -> napisac funkcje odczytujaca zaznaczenie biblioteki, obraz oraz wykouje tworzenie histogramu
+
+
+algorytm jest gotowy na stronie https://www.algorytm.org/przetwarzanie-obrazow/histogram/histogram-cs.html
+Ogarnac w miare dzialajaca aplikacje xd
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
