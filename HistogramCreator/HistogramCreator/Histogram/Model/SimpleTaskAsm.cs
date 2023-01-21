@@ -19,9 +19,9 @@ namespace Histogram.Model
 
         // extern "C" void 
 
-        [DllImport(@"C:\Users\pachu\OneDrive\Desktop\University-Projects\AsmDll\x64\Debug\AsmDll.dll")]
+        [DllImport(@"D:\Documents\GitHub\HistogramCreator\HistogramCreator\HistogramCreator\x64\Debug\AsmDll.dll")]
 
-        private static extern void incrementRGB(int[] pixels, double[] R, double[] G, double[] B);
+        private static extern void incrementRGB(int[] pixels, double[] R, double[] G, double[] B, int pixels_size);
         /// <summary>
         /// 
         /// </summary>
@@ -31,7 +31,7 @@ namespace Histogram.Model
             double[] R = new double[256];
             double[] G = new double[256];
             double[] B = new double[256];
-            incrementRGB(pixels, R, G, B);
+            incrementRGB(pixels, R, G, B, pixels.Length);
             return new ResultHolder(R, G, B);
             //extern "C" void _stdcall do_Task();
             //throw new NotImplementedException();

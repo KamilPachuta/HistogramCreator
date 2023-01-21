@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Histogram": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

@@ -14,9 +14,12 @@ namespace Histogram
         public MainForm()
         {
             InitializeComponent();
-            buttonCreate.Enabled = false;
+            //buttonCreate.Enabled = false;
+            pictureBox.Image = global::Histogram.Properties.Resources.IMG_1203;
+            
+
             trackBarThreads.Value = Environment.ProcessorCount;
-            radioButtonCS.Checked = true;
+            radioButtonAsm.Checked = true;
 
             //instructions below are here because Form generator deleted it from Designer file every time when something change in designer.
             formsPlotR.Plot.Style(Style.Gray1);
@@ -33,7 +36,7 @@ namespace Histogram
         {
             if( openFileDialog.ShowDialog() != DialogResult.OK)
             {
-                MessageBox.Show("Choose *.jp; *.jpeg; *.png; file.");
+                MessageBox.Show("Choose *.jpg; *.jpeg; *.png; file.");
             }
         }
 
@@ -48,7 +51,7 @@ namespace Histogram
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            mainModel = new MainModel(new Bitmap(openFileDialog.FileName), radioButtonCS.Checked, trackBarThreads.Value);
+            mainModel = new MainModel(new Bitmap(global::Histogram.Properties.Resources.IMG_1203/*openFileDialog.FileName*/), radioButtonCS.Checked,1 /*trackBarThreads.Value*/);
             (double[] R, double[] G, double[] B, long elapsedMiliseconds) = mainModel.getDataFromBitmap();
 
             formsPlotR.Plot.Clear();
