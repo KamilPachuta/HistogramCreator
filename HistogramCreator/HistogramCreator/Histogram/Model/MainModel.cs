@@ -29,7 +29,8 @@ namespace Histogram.Model
             usersLibChoice = choice;
             numberOfThreads = nThreads;
             bitmapWidth = loadedBitmap.Width;
-            numberOfPixels = bitmapWidth * loadedBitmap.Height;
+            numberOfPixels = (bitmapWidth * loadedBitmap.Height)/4;
+            numberOfPixels *= 4;
             changeBitmapToInts();
         }
 

@@ -22,17 +22,33 @@ namespace Histogram.Model
             this.numberOfPixels = numberOfPixels;
             this.numberOfThreads = numberOfThreads;
             this.usersLibChoice = usersLibChoice;
-            ThreadPool.SetMaxThreads(1, 1);
-            ThreadPool.SetMinThreads(1, 1);
+            //ThreadPool.SetMaxThreads(numberOfThreads, 1);
+            //ThreadPool.SetMinThreads(1, 1);
         }
 
         internal ResultHolder assignTaskAndGetData()
         {
             result = new ResultHolder(new double[256], new double[256], new double[256]);
-            int numberOfTasks = 16; // chyba przerobic na numberOfThreads i zrobi tyle taskow ile watkow.
+            int numberOfTasks = 1; // chyba przerobic na numberOfThreads i zrobi tyle taskow ile watkow.
             int numberOfData = (numberOfPixels / numberOfTasks) + 1;
 
+            //int numberOfData = 128;
+            //(numberOfPixels / numberOfTasks) + 1;
+
+            //int numberOfTasks = 1; // chyba przerobic na numberOfThreads i zrobi tyle taskow ile watkow.
+            /*
+             * if(numberOfPixles < 30 000 000)
+             *      numberOfData = 128
+             * else
+             *      numberOfData = 1024
+             *      
+             * int numberOfTasks = (numberOfPixels / numberOfData ) +
+             */
+
+
             int[][] somePixels = new int[numberOfTasks][];
+
+            
 
             for (int i = 0; i < numberOfTasks; i++)
             {

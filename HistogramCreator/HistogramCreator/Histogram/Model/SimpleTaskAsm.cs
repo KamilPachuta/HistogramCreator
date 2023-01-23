@@ -19,20 +19,31 @@ namespace Histogram.Model
 
         // extern "C" void 
 
-        [DllImport(@"D:\Documents\GitHub\HistogramCreator\HistogramCreator\HistogramCreator\x64\Debug\AsmDll.dll")]
+        [DllImport(@"D:\Documents\GitHub\HistogramCreator\HistogramCreator\HistogramCreator\x64\Debug\HistogramAsm.dll")]
 
-        private static extern void incrementRGB(int[] pixels, double[] R, double[] G, double[] B, int pixels_size);
+        private static extern void MyProc1(int pixel, int[] R, int[] G, int[] B);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public override ResultHolder doTask()
         {
-            double[] R = new double[256];
-            double[] G = new double[256];
-            double[] B = new double[256];
-            incrementRGB(pixels, R, G, B, pixels.Length);
-            return new ResultHolder(R, G, B);
+            int[] R = new int[256];
+            int[] G = new int[256];
+            int[] B = new int[256];
+            for(int i = 0; i<pixels.Length;i++)
+                MyProc1(pixels[i], R, G, B);
+            double[] dR = new double[256];
+            double[] dG = new double[256];
+            double[] dB = new double[256];
+            for(int i = 0; i<256; i++)
+            {
+                dR[i] = R[i];
+                dG[i] = G[i];
+                dB[i] = B[i];
+            }
+
+            return new ResultHolder(dR, dG, dB);
             //extern "C" void _stdcall do_Task();
             //throw new NotImplementedException();
         }
