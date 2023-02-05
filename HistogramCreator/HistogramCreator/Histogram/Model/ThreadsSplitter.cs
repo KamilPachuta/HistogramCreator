@@ -22,8 +22,8 @@ namespace Histogram.Model
             this.numberOfPixels = numberOfPixels;
             this.numberOfThreads = numberOfThreads;
             this.usersLibChoice = usersLibChoice;
-            //ThreadPool.SetMaxThreads(numberOfThreads, 1);
-            //ThreadPool.SetMinThreads(1, 1);
+            ThreadPool.SetMaxThreads(numberOfThreads, 1);
+            ThreadPool.SetMinThreads(numberOfThreads, 1);
         }
 
         internal ResultHolder assignTaskAndGetData()
