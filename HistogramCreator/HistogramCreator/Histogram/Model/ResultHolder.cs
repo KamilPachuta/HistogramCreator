@@ -10,28 +10,28 @@ namespace Histogram.Model
     
     internal class ResultHolder
     {
-        private double[] _R = new double[256];
-        private double[] _G = new double[256];
-        private double[] _B = new double[256];
+        private int[] _R = new int[256];
+        private int[] _G = new int[256];
+        private int[] _B = new int[256];
 
-        internal ResultHolder(double[] R, double[] G, double[] B) 
+        internal ResultHolder(int[] R, int[] G, int[] B) 
         {
             _R = R;
             _G = G;
             _B = B;
         }
 
-        public double[] R
+        public int[] R
         {
             get { return _R; }
         }
 
-        public double[] G 
+        public int[] G 
         { 
             get { return _G; } 
         }
 
-        public double[] B 
+        public int[] B 
         { 
             get { return _B; } 
         }
@@ -43,16 +43,14 @@ namespace Histogram.Model
                 this.R[i] += x.R[i];
                 this.G[i] += x.G[i];
                 this.B[i] += x.B[i];
-                
-
             }
         }
 
         public static ResultHolder operator +(ResultHolder x, ResultHolder y) 
         {
-            double[] r = new double[256];
-            double[] g = new double[256];
-            double[] b = new double[256];
+            int[] r = new int[256];
+            int[] g = new int[256];
+            int[] b = new int[256];
             for (int i = 0; i < 256; i++) 
             {
                 r[i] = x.R[i] + y.R[i];

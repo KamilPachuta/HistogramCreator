@@ -41,6 +41,7 @@ namespace Histogram
             this.labelTime = new System.Windows.Forms.Label();
             this.formsPlotG = new ScottPlot.FormsPlot();
             this.formsPlotB = new ScottPlot.FormsPlot();
+            this.buttonGenerateTimes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarThreads)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +66,7 @@ namespace Histogram
             // 
             // buttonLoad
             // 
-            this.buttonLoad.Location = new System.Drawing.Point(10, 550);
+            this.buttonLoad.Location = new System.Drawing.Point(10, 565);
             this.buttonLoad.Name = "buttonLoad";
             this.buttonLoad.Size = new System.Drawing.Size(75, 23);
             this.buttonLoad.TabIndex = 1;
@@ -149,12 +150,23 @@ namespace Histogram
             this.formsPlotB.Size = new System.Drawing.Size(650, 175);
             this.formsPlotB.TabIndex = 8;
             // 
+            // buttonGenerateTimes
+            // 
+            this.buttonGenerateTimes.Location = new System.Drawing.Point(10, 536);
+            this.buttonGenerateTimes.Name = "buttonGenerateTimes";
+            this.buttonGenerateTimes.Size = new System.Drawing.Size(75, 23);
+            this.buttonGenerateTimes.TabIndex = 9;
+            this.buttonGenerateTimes.Text = "Times";
+            this.buttonGenerateTimes.UseVisualStyleBackColor = true;
+            this.buttonGenerateTimes.Click += new System.EventHandler(this.buttonGenerateTimes_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(1180, 607);
+            this.Controls.Add(this.buttonGenerateTimes);
             this.Controls.Add(this.formsPlotB);
             this.Controls.Add(this.formsPlotG);
             this.Controls.Add(this.labelTime);
@@ -188,5 +200,6 @@ namespace Histogram
         private Label labelTime;
         private FormsPlot formsPlotG;
         private FormsPlot formsPlotB;
+        private Button buttonGenerateTimes;
     }
 }

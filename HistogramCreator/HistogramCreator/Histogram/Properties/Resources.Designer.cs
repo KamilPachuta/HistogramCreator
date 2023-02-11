@@ -63,6 +63,17 @@ namespace Histogram.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap HD_wallpaper_nissan_skyline_r34_gt_r_red_sports_coupe_black_wheels_red_nissan_skyline_r34_japanese_sports_cars_nissan {
+            get {
+                object obj = ResourceManager.GetObject("HD_wallpaper_nissan_skyline_r34_gt_r_red_sports_coupe_black_wheels_red_nissan_sky" +
+                        "line_r34_japanese_sports_cars_nissan", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IMG_1203 {
             get {
                 object obj = ResourceManager.GetObject("IMG_1203", resourceCulture);

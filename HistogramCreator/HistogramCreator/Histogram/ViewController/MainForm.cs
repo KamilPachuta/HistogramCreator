@@ -11,13 +11,11 @@ namespace Histogram
     {
         MainModel mainModel;
 
+
         public MainForm()
         {
             InitializeComponent();
-            //buttonCreate.Enabled = false;
-            pictureBox.Image = global::Histogram.Properties.Resources.IMG_1203;
-            
-
+            buttonCreate.Enabled = false;
             trackBarThreads.Value = Environment.ProcessorCount;
             radioButtonAsm.Checked = true;
 
@@ -51,8 +49,8 @@ namespace Histogram
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            mainModel = new MainModel(new Bitmap(global::Histogram.Properties.Resources.IMG_1203/*openFileDialog.FileName*/), radioButtonCS.Checked,1 /*trackBarThreads.Value*/);
-            (double[] R, double[] G, double[] B, long elapsedMiliseconds) = mainModel.getDataFromBitmap();
+            mainModel = new MainModel(new Bitmap(openFileDialog.FileName), radioButtonCS.Checked, trackBarThreads.Value);
+            (double[] R, double[] G, double[] B, double totalMilliseconds) = mainModel.getDataFromBitmap();
 
             formsPlotR.Plot.Clear();
             formsPlotG.Plot.Clear();
@@ -67,7 +65,45 @@ namespace Histogram
             formsPlotB.Plot.AddBar(R, Color.Blue);
             formsPlotB.Refresh();
 
-            labelTime.Text = $"{elapsedMiliseconds.ToString()} ms";
+            labelTime.Text = $"{totalMilliseconds} ms";
+
+        }
+
+        private void buttonGenerateTimes_Click(object sender, EventArgs e)
+        {
+
+            double[] iR;
+            double[] iG;
+            double[] iB;
+            double itotalMilliseconds;
+            
+            string resultString = "Threads\nasm\tcs\n";
+            for (int i = 1; i<64; i++)
+            {
+                double resultASM = 0;
+                double resultCS = 0;
+
+
+                //for (int j = 0; j <= 10; j++)
+                //{
+                    mainModel = new MainModel(new Bitmap(global::Histogram.Properties.Resources.HD_wallpaper_nissan_skyline_r34_gt_r_red_sports_coupe_black_wheels_red_nissan_skyline_r34_japanese_sports_cars_nissan), false, trackBarThreads.Value);
+                    (iR, iG, iB, itotalMilliseconds) = mainModel.getDataFromBitmap();
+                    //if(j != 0)
+                        resultASM += itotalMilliseconds;
+
+                    mainModel = new MainModel(new Bitmap(global::Histogram.Properties.Resources.HD_wallpaper_nissan_skyline_r34_gt_r_red_sports_coupe_black_wheels_red_nissan_skyline_r34_japanese_sports_cars_nissan), true, trackBarThreads.Value);
+                    (iR, iG, iB, itotalMilliseconds) = mainModel.getDataFromBitmap();
+                    //if(j != 0)
+                        resultCS += itotalMilliseconds;
+
+                //}
+                resultString += $"{i}\t";
+                resultString += $"{resultASM / 1}\t";
+                resultString += $"{resultCS / 1}\n";
+            }
+            File.WriteAllText($"result.txt", resultString);
+
+
         }
     }
 }

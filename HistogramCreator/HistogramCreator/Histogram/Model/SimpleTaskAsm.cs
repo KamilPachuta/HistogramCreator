@@ -46,18 +46,9 @@ namespace Histogram.Model
                 }
             }
 
-            double[] dR = new double[256];
-            double[] dG = new double[256];
-            double[] dB = new double[256];
+            
 
-            for(int i = 0; i<256; i++)
-            {
-                dR[i] = R[i];
-                dG[i] = G[i];
-                dB[i] = B[i];
-            }
-
-            return new ResultHolder(dR, dG, dB);
+            return new ResultHolder(R, G, B);
         }
     }
 }

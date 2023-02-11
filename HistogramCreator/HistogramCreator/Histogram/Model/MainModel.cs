@@ -38,14 +38,12 @@ namespace Histogram.Model
         /// 
         /// </summary>
         /// <returns></returns>
-        public (double[] R, double[] G, double[] B, long elapsedMiliseconds) getDataFromBitmap()
+        public (double[] R, double[] G, double[] B, double totalMilliseconds) getDataFromBitmap()
         {
-            Stopwatch stopwatch = Stopwatch.StartNew();
             ThreadsSplitter threadsSplitter = new(pixels, numberOfPixels, numberOfThreads, usersLibChoice);
-            ResultHolder result = threadsSplitter.assignTaskAndGetData();
+            (ResultHolder result, double time) = threadsSplitter.assignTaskAndGetData();
             (double[] R, double[] G, double[] B) = changeResultToTables(result);
-            stopwatch.Stop();
-            return (R, G, B, stopwatch.ElapsedMilliseconds);
+            return (R, G, B, time);
         }
 
         /// <summary>
@@ -63,19 +61,25 @@ namespace Histogram.Model
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
         private (double[] R, double[] G, double[] B) changeResultToTables(ResultHolder result)
         {
+            
             double[] r = new double[256];
             double[] g = new double[256];
             double[] b = new double[256];
 
-            for (int i = 0; i < 256; i++)
+            for(int i = 0; i < 256; i++)
             {
                 r[i] = result.R[i];
                 g[i] = result.G[i];
                 b[i] = result.B[i];
-            }
 
+            }
             return (r, g, b);
         }
 
